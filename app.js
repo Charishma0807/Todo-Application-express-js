@@ -56,7 +56,7 @@ app.get("/todos/", async (request, response) => {
             WHERE 
                 todo LIKE '%${search_q}%'
                 AND status = '${status}'
-                AND priority = ${priority};
+                AND priority = '${priority}';
             `;
       break;
 
@@ -66,7 +66,7 @@ app.get("/todos/", async (request, response) => {
             FROM todo
             WHERE 
                 todo LIKE '%${search_q}%'
-                AND priority = ${priority};
+                AND priority = '${priority}';
             `;
       break;
 
@@ -76,7 +76,7 @@ app.get("/todos/", async (request, response) => {
             FROM todo
             WHERE
                 todo LIKE '%${search_q}%'
-                AND Status = ${status};
+                AND Status = '${status}';
             `;
       break;
     default:
@@ -104,7 +104,7 @@ app.get("/todos/:todoId/", async (request, response) => {
         id = ${todoId};
     `;
   const todo = await database.get(getTodoQuery);
-  request.send(todo);
+  response.send(todo);
 });
 
 //API3
